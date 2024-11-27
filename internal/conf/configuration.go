@@ -6,7 +6,6 @@ import (
 	"github.com/dharmab/skyeye/pkg/coalitions"
 	"github.com/dharmab/skyeye/pkg/simpleradio"
 	"github.com/dharmab/skyeye/pkg/synthesizer/voices"
-	"github.com/ggerganov/whisper.cpp/bindings/go/pkg/whisper"
 	"github.com/martinlindhe/unit"
 )
 
@@ -47,8 +46,6 @@ type Configuration struct {
 	// RadarSweepInterval is the rate at which the radar will update. This does not impact performance - ACMI data is still streamed at the same rate.
 	// It only impacts the update rate of the GCI radar picture.
 	RadarSweepInterval time.Duration
-	// WhisperModel is a whisper.cpp model used for Speech To Text
-	WhisperModel *whisper.Model
 	// Voice is the voice used for SRS transmissions
 	Voice voices.Voice
 	// Mute disables SRS transmissions
