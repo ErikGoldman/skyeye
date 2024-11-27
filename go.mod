@@ -1,6 +1,6 @@
 module github.com/ErikGoldman/skyeye
 
-go 1.23.3
+go 1.23.2
 
 replace github.com/dharmab/skyeye => ./
 
