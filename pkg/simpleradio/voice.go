@@ -53,15 +53,7 @@ func (c *client) decodeVoice(ctx context.Context, voicePacketsChan <-chan []voic
 }
 
 // encodeVoice encodes audio from the client's txChan and publishes an entire transmission's worth of voice packets to packetCh.
-func (c *client) encodeVoice(ctx context.Context, packetChan chan<- []voice.VoicePacket) {
-	frequencyList := make([]voice.Frequency, 0, len(c.clientInfo.RadioInfo.Radios))
-	for _, radio := range c.clientInfo.RadioInfo.Radios {
-		frequencyList = append(frequencyList, voice.Frequency{
-			Frequency:  radio.Frequency,
-			Modulation: byte(radio.Modulation),
-			Encryption: 0,
-		})
-	}
+func (c *client) encodeVoice(ctx context.Context, frequencyList []voice.Frequency, packetChan chan<- []voice.VoicePacket) {
 	for {
 		select {
 		case transmission := <-c.txChan:
@@ -107,7 +99,7 @@ func (c *client) encodeVoice(ctx context.Context, packetChan chan<- []voice.Voic
 			}
 			packetChan <- txPackets
 		case <-ctx.Done():
-			log.Info().Msg("stopping voice encoder due to context cancellation")
+			log.Info().Msg("voice packet encoding complete")
 			return
 		}
 	}
