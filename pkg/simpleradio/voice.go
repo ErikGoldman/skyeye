@@ -54,7 +54,7 @@ func (c *client) decodeVoice(ctx context.Context, voicePacketsChan <-chan []voic
 }
 
 // encodeVoice encodes audio from the client's txChan and publishes an entire transmission's worth of voice packets to packetCh.
-func (c *client) encodeVoice(ctx context.Context, frequencyList []voice.Frequency, packetChan chan<- []voice.VoicePacket) {
+func (c *client) encodeVoice(ctx context.Context, packetChan chan<- []voice.VoicePacket) {
 	for {
 		select {
 		case transmission := <-c.txChan:
@@ -88,7 +88,7 @@ func (c *client) encodeVoice(ctx context.Context, frequencyList []voice.Frequenc
 				guid := c.clientInfo.GUID
 				voicePacket := voice.NewVoicePacket(
 					audioBytes,
-					frequencyList,
+					transmission.Frequencies,
 					100000002,
 					c.packetNumber,
 					0,
