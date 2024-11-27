@@ -235,12 +235,10 @@ func (c *client) Run(ctx context.Context, wg *sync.WaitGroup) error {
 
 	voicePacketsTxChan := make(chan []voice.VoicePacket, 3)
 	wg.Add(4)
-	/*
 	go func() {
 		defer wg.Done()
 		c.encodeVoice(ctx, voicePacketsTxChan)
 	}()
-		*/
 	go func() {
 		defer wg.Done()
 		c.transmit(ctx, voicePacketsTxChan)
