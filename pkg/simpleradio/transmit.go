@@ -3,7 +3,6 @@ package simpleradio
 import (
 	"context"
 	"errors"
-	"math/rand/v2"
 	"net"
 	"time"
 
