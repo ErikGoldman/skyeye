@@ -2,7 +2,7 @@ module github.com/ErikGoldman/skyeye
 
 go 1.23.2
 
-replace github.com/dharmab/skyeye => ./
+replace github.com/dharmab/skyeye => github.com/ErikGoldman/skyeye
 
 require (
 	github.com/DCS-gRPC/go-bindings v0.7.1
