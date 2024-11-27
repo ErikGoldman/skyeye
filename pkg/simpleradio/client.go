@@ -81,6 +81,7 @@ type client struct {
 	// txLock prevents multiple outgoing transmissions from occurring simultaneously. It must be acquired before writing
 	// voice packets to the UDP connection.
 	txLock sync.Mutex
+
 	// mute suppresses audio transmission.
 	mute bool
 

@@ -29,9 +29,6 @@ func (c *client) transmit(ctx context.Context, packetChan <-chan []voice.VoicePa
 					c.writePackets(packets)
 				}
 			}()
-			// Pause between transmissions to sound more natural.
-			pause := time.Duration(500+rand.IntN(500)) * time.Millisecond
-			time.Sleep(pause)
 		case <-ctx.Done():
 			log.Info().Msg("stopping SRS audio transmitter due to context cancellation")
 			return
