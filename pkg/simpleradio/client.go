@@ -19,7 +19,7 @@ type Audio []float32
 type Transmission struct {
 	TraceID    string
 	ClientName string
-	Frequencies []Frequency
+	Frequencies []simpleradio.Frequency
 	Audio      Audio
 }
 
