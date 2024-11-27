@@ -2,6 +2,8 @@ module github.com/ErikGoldman/skyeye
 
 go 1.23.3
 
+replace github.com/dharmab/skyeye => ./
+
 require (
 	github.com/DCS-gRPC/go-bindings v0.7.1
 	github.com/amitybell/piper-asset v0.0.0-20231030194325-d36a29e3b1fd
