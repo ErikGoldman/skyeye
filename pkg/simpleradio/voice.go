@@ -41,6 +41,7 @@ func (c *client) decodeVoice(ctx context.Context, voicePacketsChan <-chan []voic
 					TraceID:    shortuuid.New(),
 					ClientName: name,
 					Audio:      transmissionPCM,
+					Frequencies: voicePackets[0].Frequencies,
 				}
 			} else {
 				log.Debug().Msg("decoded transmission PCM is empty")
